@@ -2,7 +2,8 @@ import time
 import os
 import random
 import requests
-from selenium import webdriver
+import undetected_chromedriver as uc
+driver = uc.Chrome()
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
@@ -20,8 +21,8 @@ time.sleep(8)
 print('Running bot now, get ready and login manually...')
 time.sleep(4)
 
-options = webdriver.ChromeOptions()
-bot = webdriver.Chrome(options=options,  executable_path=CM().install())
+options = uc.ChromeOptions()
+bot = uc.Chrome(options=options,  executable_path=CM().install())
 bot.set_window_size(1680, 900)
 
 bot.get('https://www.tiktok.com/login')
@@ -105,6 +106,7 @@ def upload(video_path):
 # ================================================================
 # Here is the path of the video that you want to upload in tiktok.
 # Plese edit the path because this is different to everyone.
+
 for i in todosVideos:
     upload(i)
     os.remove(i)
